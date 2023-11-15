@@ -4,25 +4,31 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.webservicejpa.webservicejpa.entities.pk.OrderItemPK;
 
 import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name="tb_order_item")
 public class OrderItem {
 
 	@EmbeddedId
 	private OrderItemPK id = new OrderItemPK();
+	
 	private Integer quantity;
 	private Double price;
 	
 	public OrderItem() {
 	}
 	
-	public OrderItem(Product product, Order order, Integer quantity, Double price) {
+	public OrderItem( Order order,Product product, Integer quantity, Double price) {
+		super();
 		id.setProduct(product);
 		id.setOrder(order);
 		this.quantity = quantity;
 		this.price = price;
 	}
 	
-	@JsonIgnore
+	
 	public Product getProduct() {
 		return id.getProduct();
 	}

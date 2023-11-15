@@ -1,5 +1,11 @@
 package com.webservicejpa.webservicejpa.repositories;
 
-public class OrderItemRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.webservicejpa.webservicejpa.entities.OrderItem;
+
+@Repository
+public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
 
 }
