@@ -1,5 +1,7 @@
 package com.webservicejpa.webservicejpa.entities;
 
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.webservicejpa.webservicejpa.entities.pk.OrderItemPK;
 
@@ -61,7 +63,25 @@ public class OrderItem {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	public Double getSubTotal() {
+		return price * quantity;
+	}
 	
-	
-	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OrderItem other = (OrderItem) obj;
+		return Objects.equals(id, other.id);
+	}
 }
