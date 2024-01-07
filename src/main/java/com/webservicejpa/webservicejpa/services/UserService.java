@@ -2,10 +2,10 @@ package com.webservicejpa.webservicejpa.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.webservicejpa.webservicejpa.entities.User;
@@ -25,7 +25,7 @@ public class UserService {
 		return this.repository.findAll();
 	}
 	
-	public User findById(Long id) {
+	public User findById(UUID id) {
 		Optional<User> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
@@ -34,7 +34,7 @@ public class UserService {
 		return repository.save(obj);
 	}
 	
-	public void delete(Long id) {
+	public void delete(UUID id) {
 		try {
 			Optional<User> userOptional = repository.findById(id);
 			
@@ -48,7 +48,7 @@ public class UserService {
 		}
 	}
 	
-	public User update(Long id, User obj) {
+	public User update(UUID id, User obj) {
 		try {
 			User entity = repository.getReferenceById(id);
 			updateData(entity, obj);
