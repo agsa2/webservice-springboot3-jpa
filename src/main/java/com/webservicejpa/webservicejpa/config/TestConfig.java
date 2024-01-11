@@ -20,6 +20,7 @@ import com.webservicejpa.webservicejpa.repositories.OrderItemRepository;
 import com.webservicejpa.webservicejpa.repositories.OrderRepository;
 import com.webservicejpa.webservicejpa.repositories.ProductRepository;
 import com.webservicejpa.webservicejpa.repositories.UserRepository;
+import com.webservicejpa.webservicejpa.resources.UserResource;
 
 @Configuration
 @Profile("test")
