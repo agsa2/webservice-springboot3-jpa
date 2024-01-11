@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.webservicejpa.webservicejpa.entities.User;
@@ -30,6 +31,11 @@ public class UserService {
 		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
+	public Optional<User> findByName(String name) {
+		Optional<User> obj = repository.findByName(name);
+		return obj;
+	}
+
 	public User insert(User obj) {
 		return repository.save(obj);
 	}
@@ -64,4 +70,5 @@ public class UserService {
 		entity.setEmail(obj.getEmail());
 		entity.setPhone(obj.getPhone());
 	}
-}
+
+	}
